@@ -1,0 +1,26 @@
+doctype html
+include head
+if hasFailToLogin
+  script.
+    alert("Fail to authorized...")
+body
+  h1 Shooting Game
+  hr
+  if authorized
+    div(class="container")
+      form(action="/user/logout" method="POST")
+        input(type="submit" name="Logout" value="Logout")
+    p Welcome back : #{user.name}
+  else
+    div(class="container")
+      form(action="/signup" method="POST")
+        input(type="submit" name="Signup" value="Signup")
+      form(action="/user/login" method="POST" style="margin-left: 4px")
+        input(type="submit" name="Login" value="Login")
+  a(href="/download") download
+  br
+  a(href="/lobby" target="_blank" rel="noopener") lobby
+  br
+  a(href="/about") about
+  br
+  p ...Game info here...
